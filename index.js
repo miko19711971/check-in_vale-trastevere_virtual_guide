@@ -1,4 +1,4 @@
-// Check-in — [PUT ADDRESS HERE] (static guide)
+// Check-in — [Viale Trastevere 108] (static guide)
 import express from 'express';
 import cors from 'cors';
 
@@ -51,7 +51,7 @@ app.get('/', (_req, res) => {
       <div class="num">1</div>
       <div>
         <h2>Arriving at the Building</h2>
-        <p>When you arrive at the entrance shown below, you’re at the correct building.</p>
+        <p>When you arrive at the entrance shown below, you’re arrived at your destination.</p>
         <figure>
           <img src="building-entrance.jpg" alt="Building entrance">
           <figcaption>Building entrance / passageway to the courtyard.</figcaption>
@@ -97,7 +97,7 @@ app.get('/', (_req, res) => {
       <div class="num">4</div>
       <div>
         <h2>Reaching the Apartment</h2>
-        <p>Take the stairs/elevator to <b>[FLOOR]</b> (replace with correct floor). The apartment door looks like this:</p>
+        <p>Take the stairs/elevator to <b>[4th]</b> (replace with correct floor). The apartment door looks like this:</p>
         <figure>
           <img src="apartment-door.jpg" alt="Apartment door">
           <figcaption>Apartment door.</figcaption>
