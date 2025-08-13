@@ -1,4 +1,4 @@
-// Check-in — [Viale Trastevere 108] (static guide)
+// Check-in — Viale Trastevere 108 (static guide)
 import express from 'express';
 import cors from 'cors';
 
@@ -97,7 +97,7 @@ app.get('/', (_req, res) => {
       <div class="num">4</div>
       <div>
         <h2>Reaching the Apartment</h2>
-        <p>Take the stairs/elevator to <b>[4th]</b> The apartment door looks like this:</p>
+        <p>Take the stairs/elevator to <b>4th</b> This is the door of your apartment.:</p>
         <figure>
           <img src="apartment-door.jpg" alt="Apartment door">
           <figcaption>Apartment door.</figcaption>
