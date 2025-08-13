@@ -40,7 +40,7 @@ app.get('/', (_req, res) => {
 </head>
 <body>
 <header class="wrap">
-  <h1>Check-in Guide — [PUT ADDRESS HERE]</h1>
+  <h1>Check-in Guide — [Viale Trastevere 108]</h1>
   <div class="addr">Intercom: <b>B-9 “Chiani”</b></div>
 </header>
 
@@ -97,7 +97,7 @@ app.get('/', (_req, res) => {
       <div class="num">4</div>
       <div>
         <h2>Reaching the Apartment</h2>
-        <p>Take the stairs/elevator to <b>[4th]</b> (replace with correct floor). The apartment door looks like this:</p>
+        <p>Take the stairs/elevator to <b>[4th]</b> The apartment door looks like this:</p>
         <figure>
           <img src="apartment-door.jpg" alt="Apartment door">
           <figcaption>Apartment door.</figcaption>
