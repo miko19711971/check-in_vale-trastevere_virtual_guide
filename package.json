@@ -1,12 +1,14 @@
-{
-  "name": "check-in-guide",
+ {
+  "name": "check-in-viale-trastevere-108",
   "version": "1.0.0",
+  "description": "Multilingual static check-in guide for Viale Trastevere 108",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "4.19.2",
-    "cors": "2.8.5"
+    "cors": "2.8.5",
+    "express": "4.19.2"
   }
 }
