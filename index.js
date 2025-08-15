@@ -7,13 +7,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.')); // serve le immagini dalla root del repo
 
-// -------- TRANSLATIONS --------
+// ---------- TRANSLATIONS ----------
 const T = {
   en: {
     langName: 'English',
+    langLabel: 'Language',
     title: 'Check-in Guide — Viale Trastevere 108',
     addressLine: 'Address: Viale Trastevere 108, Rome • Intercom: B-9 “Chiani”',
-    navHelp: 'Need help?',
+    help: 'Need help?',
     call: 'Call or WhatsApp',
     phone: '+39 335 524 5756',
 
@@ -31,18 +32,19 @@ const T = {
     s3_cap: 'Walk straight to the inner gate.',
 
     s4_t: 'Reaching the Apartment',
-    s4_p_top: 'Take the stairs/elevator to the 4th floor.',
-    s4_p_call: 'Call me when you are in front of the door and I will open it for you:',
+    s4_p1: 'Take the stairs/elevator to the 4th floor.',
+    s4_p2: 'Call me when you are in front of the door and I will open it for you:',
     s4_cap: 'Apartment door.',
 
-    footer: 'niceflatinrome.com • Quick visual check-in guide'
+    footer: 'niceflatinrome.com • Quick visual check-in guide',
   },
 
   es: {
     langName: 'Español',
+    langLabel: 'Idioma',
     title: 'Guía de Check-in — Viale Trastevere 108',
     addressLine: 'Dirección: Viale Trastevere 108, Roma • Portero: B-9 “Chiani”',
-    navHelp: '¿Necesitas ayuda?',
+    help: '¿Necesitas ayuda?',
     call: 'Llamar o WhatsApp',
     phone: '+39 335 524 5756',
 
@@ -52,7 +54,7 @@ const T = {
 
     s2_t: 'Uso del portero',
     s2_p1: 'Pulsa B-9 (Chiani) en el panel y luego llámame al',
-    s2_p2: 'Espera el “clic” para abrir la puerta.',
+    s2_p2: 'Espera el “clic” para que se abra la puerta.',
     s2_cap: 'Portero — pulsa B-9 (Chiani).',
 
     s3_t: 'Cruza el pasillo',
@@ -60,18 +62,19 @@ const T = {
     s3_cap: 'Recto hasta la reja interior.',
 
     s4_t: 'Llegar al apartamento',
-    s4_p_top: 'Sube por las escaleras/ascensor hasta el 4º piso.',
-    s4_p_call: 'Llámame cuando estés frente a la puerta y la abriré por ti:',
+    s4_p1: 'Sube por las escaleras/ascensor hasta el 4º piso.',
+    s4_p2: 'Llámame cuando estés frente a la puerta y la abriré por ti:',
     s4_cap: 'Puerta del apartamento.',
 
-    footer: 'niceflatinrome.com • Guía visual de check-in'
+    footer: 'niceflatinrome.com • Guía visual de check-in',
   },
 
   fr: {
     langName: 'Français',
+    langLabel: 'Langue',
     title: 'Guide d’arrivée — Viale Trastevere 108',
     addressLine: 'Adresse : Viale Trastevere 108, Rome • Interphone : B-9 « Chiani »',
-    navHelp: 'Besoin d’aide ?',
+    help: 'Besoin d’aide ?',
     call: 'Appeler ou WhatsApp',
     phone: '+39 335 524 5756',
 
@@ -89,84 +92,86 @@ const T = {
     s3_cap: 'Tout droit vers le portail intérieur.',
 
     s4_t: 'Accéder à l’appartement',
-    s4_p_top: 'Prenez l’escalier / l’ascenseur jusqu’au 4e étage.',
-    s4_p_call: 'Appelez-moi devant la porte, je vous l’ouvrirai :',
+    s4_p1: 'Prenez les escaliers/l’ascenseur jusqu’au 4e étage.',
+    s4_p2: 'Appelez-moi lorsque vous êtes devant la porte, je vous l’ouvrirai :',
     s4_cap: 'Porte de l’appartement.',
 
-    footer: 'niceflatinrome.com • Guide visuel de check-in'
+    footer: 'niceflatinrome.com • Guide visuel d’arrivée',
   },
 
   de: {
     langName: 'Deutsch',
+    langLabel: 'Sprache',
     title: 'Check-in-Anleitung — Viale Trastevere 108',
-    addressLine: 'Adresse: Viale Trastevere 108, Rom • Gegensprechanlage: B-9 „Chiani“',
-    navHelp: 'Brauchen Sie Hilfe?',
+    addressLine: 'Adresse: Viale Trastevere 108, Rom • Sprechanlage: B-9 „Chiani“',
+    help: 'Brauchen Sie Hilfe?',
     call: 'Anrufen oder WhatsApp',
     phone: '+39 335 524 5756',
 
     s1_t: 'Ankunft am Gebäude',
     s1_p: 'Wenn Sie den Eingang unten sehen, sind Sie am Ziel.',
-    s1_cap: 'Gebäudeeingang / Durchgang zum Hof.',
+    s1_cap: 'Hauseingang / Durchgang in den Hof.',
 
     s2_t: 'Sprechanlage benutzen',
     s2_p1: 'Drücken Sie B-9 (Chiani) und rufen Sie mich dann an unter',
-    s2_p2: 'Warten Sie auf das Klick-Geräusch zum Entriegeln.',
+    s2_p2: 'Warten Sie auf das Klicken zum Entriegeln.',
     s2_cap: 'Sprechanlage — Taste B-9 (Chiani).',
 
-    s3_t: 'Durch den Durchgang',
+    s3_t: 'Durch den Durchgang gehen',
     s3_p: 'Gehen Sie geradeaus bis zum inneren Tor.',
     s3_cap: 'Geradeaus bis zum inneren Tor.',
 
-    s4_t: 'Zur Wohnung',
-    s4_p_top: 'Nehmen Sie Treppe/Aufzug in den 4. Stock.',
-    s4_p_call: 'Rufen Sie mich vor der Tür an, ich öffne für Sie:',
+    s4_t: 'Wohnung erreichen',
+    s4_p1: 'Nehmen Sie Treppe/Aufzug in den 4. Stock.',
+    s4_p2: 'Rufen Sie mich an, wenn Sie vor der Tür stehen, ich öffne sie für Sie:',
     s4_cap: 'Wohnungstür.',
 
-    footer: 'niceflatinrome.com • Visuelle Check-in-Anleitung'
+    footer: 'niceflatinrome.com • Visuelle Check-in-Anleitung',
   },
 
   it: {
     langName: 'Italiano',
+    langLabel: 'Lingua',
     title: 'Guida Check-in — Viale Trastevere 108',
     addressLine: 'Indirizzo: Viale Trastevere 108, Roma • Citofono: B-9 “Chiani”',
-    navHelp: 'Serve aiuto?',
+    help: 'Serve aiuto?',
     call: 'Chiama o WhatsApp',
     phone: '+39 335 524 5756',
 
-    s1_t: "Arrivo all'edificio",
+    s1_t: 'Arrivo al palazzo',
     s1_p: 'Quando vedi l’ingresso qui sotto, sei arrivato a destinazione.',
     s1_cap: 'Ingresso / passaggio verso il cortile.',
 
     s2_t: 'Uso del citofono',
     s2_p1: 'Premi B-9 (Chiani) sul pannello, poi chiamami al',
-    s2_p2: 'Attendi lo “scatto” di sblocco del cancello.',
+    s2_p2: 'Attendi il “clic” di sblocco del cancello.',
     s2_cap: 'Pannello citofono — premi B-9 (Chiani).',
 
     s3_t: 'Attraversa il passaggio',
-    s3_p: 'Prosegui dritto nel passaggio fino al cancello interno.',
-    s3_cap: 'Vai dritto fino al cancello interno.',
+    s3_p: 'Prosegui dritto fino al cancelletto interno.',
+    s3_cap: 'Dritto fino al cancelletto interno.',
 
-    s4_t: "Raggiungere l'appartamento",
-    s4_p_top: 'Prendi scale/ascensore fino al 4° piano.',
-    s4_p_call: 'Chiamami quando sei davanti alla porta e la apro io:',
-    s4_cap: "Porta dell'appartamento.",
+    s4_t: 'Raggiungere l’appartamento',
+    s4_p1: 'Scala/ascensore fino al 4° piano.',
+    s4_p2: 'Chiamami quando sei davanti alla porta e la apro io:',
+    s4_cap: 'Porta dell’appartamento.',
 
-    footer: 'niceflatinrome.com • Guida rapida di check-in'
+    footer: 'niceflatinrome.com • Guida rapida di check-in',
   }
 };
 
 const fallback = 'en';
 
-// -------- PAGE ROUTE --------
+// ---------- ROUTE ----------
 app.get('/', (req, res) => {
   const lang = (req.query.lang || '').toLowerCase();
   const L = T[lang] || T[fallback];
 
   const buttons = Object.entries(T)
     .map(([code, v]) => {
-      const isActive = (L === T[code]);
-      return `<a href="?lang=${code}"${isActive ? ' class="active"' : ''}>${v.langName}</a>`;
-    }).join(' · ');
+      const active = (L === T[code]) ? 'class="lang-btn active"' : 'class="lang-btn"';
+      return `<a ${active} href="?lang=${code}">${v.langName}</a>`;
+    }).join(' ');
 
   const html = `<!doctype html>
 <html lang="${lang || fallback}">
@@ -183,9 +188,9 @@ app.get('/', (req, res) => {
   header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--line);padding:12px 14px;z-index:5}
   h1{font-size:20px;margin:0}
   .addr{font-size:14px;color:var(--muted)}
-  .lang{font-size:15px;font-weight:800;margin-top:8px}
-  .lang a{color:var(--ink);text-decoration:none}
-  .lang a.active{text-decoration:underline}
+  .langbar{font-size:14px;margin-top:6px;color:var(--muted)}
+  .lang-btn{font-weight:700;margin-right:10px;text-decoration:none;color:var(--ink)}
+  .lang-btn.active{text-decoration:underline}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
   .step{display:flex;gap:12px;align-items:flex-start}
   .num{flex:0 0 36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
@@ -193,9 +198,8 @@ app.get('/', (req, res) => {
   p{margin:6px 0;line-height:1.45}
   figure{margin:10px 0}
   img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
-  figure img{width:90%;margin:0 auto}
-  figcaption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
-  .cta{display:inline-block;margin-top:6px;padding:8px 12px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none}
+  figcaption{font-size:12px;color:var(--muted);margin-top:6px}
+  .cta{display:inline-block;margin-left:6px;padding:7px 10px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none}
   footer{color:var(--muted);text-align:center;font-size:12px;margin:18px 0}
 </style>
 </head>
@@ -203,11 +207,11 @@ app.get('/', (req, res) => {
 <header class="wrap">
   <h1>${L.title}</h1>
   <div class="addr">${L.addressLine}</div>
-  <div class="lang">Language / Idioma / Langue / Sprache / Lingua: ${buttons}</div>
+  <div class="langbar">${L.langLabel}: ${buttons}</div>
 </header>
 
 <main class="wrap">
-  <!-- Step 1 -->
+  <!-- 1 -->
   <section class="card">
     <div class="step">
       <div class="num">1</div>
@@ -222,7 +226,7 @@ app.get('/', (req, res) => {
     </div>
   </section>
 
-  <!-- Step 2 -->
+  <!-- 2 -->
   <section class="card">
     <div class="step">
       <div class="num">2</div>
@@ -230,14 +234,14 @@ app.get('/', (req, res) => {
         <h2>${L.s2_t}</h2>
         <p>${L.s2_p1} <a class="cta" href="tel:+393355245756">${L.phone}</a>. ${L.s2_p2}</p>
         <figure>
-          <img src="intercom-b9.jpg" alt="Intercom — press B-9 Chiani">
+          <img src="intercom-b9.jpg" alt="Intercom B-9 Chiani">
           <figcaption>${L.s2_cap}</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Step 3 -->
+  <!-- 3 -->
   <section class="card">
     <div class="step">
       <div class="num">3</div>
@@ -245,31 +249,31 @@ app.get('/', (req, res) => {
         <h2>${L.s3_t}</h2>
         <p>${L.s3_p}</p>
         <figure>
-          <img src="corridor-gate.jpg" alt="Corridor leading to the inner gate">
+          <img src="corridor-gate.jpg" alt="Passage to inner gate">
           <figcaption>${L.s3_cap}</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Step 4 -->
+  <!-- 4 -->
   <section class="card">
     <div class="step">
       <div class="num">4</div>
       <div>
         <h2>${L.s4_t}</h2>
-        <p>${L.s4_p_top}</p>
+        <p>${L.s4_p1}</p>
         <figure>
           <img src="apartment-door.jpg" alt="Apartment door">
           <figcaption>${L.s4_cap}</figcaption>
         </figure>
-        <p>${L.s4_p_call} <a class="cta" href="tel:+393355245756">${L.phone}</a></p>
+        <p>${L.s4_p2} <a class="cta" href="tel:+393355245756">${L.phone}</a></p>
       </div>
     </div>
   </section>
 
   <section class="card">
-    <h2>${L.navHelp}</h2>
+    <h2>${L.help}</h2>
     <p>${L.call}: <a class="cta" href="tel:+393355245756">${L.phone}</a></p>
   </section>
 
@@ -277,7 +281,7 @@ app.get('/', (req, res) => {
 </main>
 </body>
 </html>`;
-  res.setHeader('content-type', 'text/html; charset=utf-8');
+  res.setHeader('content-type','text/html; charset=utf-8');
   res.end(html);
 });
 
